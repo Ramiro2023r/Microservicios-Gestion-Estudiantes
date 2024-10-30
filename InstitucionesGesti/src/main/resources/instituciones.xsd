@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://example.com/soap"
+           targetNamespace="http://example.com/soap"
+           elementFormDefault="qualified">
+
+    <xs:element name="getInstitucionRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ruc" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getInstitucionResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="institucion" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ruc" type="xs:string"/>
+                            <xs:element name="codigo" type="xs:string"/>
+                            <xs:element name="nombre" type="xs:string"/>
+                            <xs:element name="direccion" type="xs:string"/>
+                            <xs:element name="telefono" type="xs:string"/>
+                            <xs:element name="tipo" type="xs:string"/>
+                            <xs:element name="email" type="xs:string"/>
+                            <xs:element name="anioFundacion" type="xs:int"/>
+                            <xs:element name="sitioWeb" type="xs:string" minOccurs="0"/>
+                            <xs:element name="encargado" type="xs:string" minOccurs="0"/>
+                            <xs:element name="nivelEducativo" type="xs:string" minOccurs="0"/>
+                            <xs:element name="pais" type="xs:string"/>
+                            <xs:element name="estado" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

@@ -1,0 +1,25 @@
+
+
+-------esto se ejecuta en posman----- 
+-----en Headers agregamos esto-----
+Content-type
+-------en value-----
+text/xml;charset=utf-8
+
+-------método post-----
+
+http://localhost:8085/ws
+
+
+--------body------
+
+
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://example.com/soap">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <soap:getInstitucionRequest>
+         <soap:ruc>22012345678</soap:ruc>
+      </soap:getInstitucionRequest>
+   </soapenv:Body>
+</soapenv:Envelope>

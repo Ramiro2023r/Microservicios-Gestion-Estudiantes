@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Estudiante</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>Reporte de Estudiante</h1>
+
+<h3><i class="fas fa-user icon"></i> &nbsp; Datos Personales del Estudiante</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Fecha de Nacimiento</th>
+        <th>Fecha de Inscripción</th>
+        <th>Estado</th>
+    </tr>
+    <tr>
+        <td th:text="${estudianteDatos.getEstudiante().getId()}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getNombre()}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getApellido()}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getCorreo()}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getTelefono()}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getDireccion()}"></td>
+        <td th:text="${#dates.format(estudianteDatos.getEstudiante().getFechaNacimiento(), 'dd/MM/yyyy')}"></td>
+        <td th:text="${#dates.format(estudianteDatos.getEstudiante().getFechaInscripcion(), 'dd/MM/yyyy')}"></td>
+        <td th:text="${estudianteDatos.getEstudiante().getEstado() ? 'Activo' : 'Inactivo'}"></td>
+    </tr>
+</table>
+<br>
+
+<h3><i class="fas fa-graduation-cap icon"></i>&nbsp; Historial Académico del Estudiante</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Institución</th>
+        <th>Programa</th>
+        <th>Nivel Educativo</th>
+        <th>Título Obtenido</th>
+        <th>Promedio General</th>
+        <th>Créditos Totales</th>
+        <th>Créditos Aprobados</th>
+        <th>Estatus de Graduación</th>
+        <th>Fecha de Graduación</th>
+    </tr>
+    <tr th:each="histo : ${estudianteDatos.getHistorialAcademico() }">
+        <td th:text="${histo.getId()}"></td>
+        <td th:text="${histo.getRazonSocial()}"></td>
+        <td th:text="${histo.getTipoPrograma()}"></td>
+        <td th:text="${histo.getNivelEducativo()}"></td>
+        <td th:text="${histo.getTituloObtenido()}"></td>
+        <td th:text="${histo.getPromedioGeneral()}"></td>
+        <td th:text="${histo.getCreditosTotales()}"></td>
+        <td th:text="${histo.getCreditosAprobados()}"></td>
+        <td th:text="${histo.getEstatusGraduacion()}"></td>
+        <td th:text="${#dates.format(histo.getFechaGraduacion(), 'dd/MM/yyyy')}"></td>
+    </tr>
+</table>
+<br>
+
+<h3><i class="fas fa-calendar-alt icon"></i>&nbsp; Permisos del Estudiante</h3>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Tipo de Permiso</th>
+        <th>Fecha Inicio</th>
+        <th>Fecha Fin</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+    </tr>
+    <tr th:each="permiso : ${estudianteDatos.getPermiso()}">
+        <td th:text="${permiso.getId()}"></td>
+        <td th:text="${permiso.getTipo()}"></td>
+        <td th:text="${#dates.format(permiso.getFechaInicio(), 'dd/MM/yyyy')}"></td>
+        <td th:text="${#dates.format(permiso.getFechaFin(), 'dd/MM/yyyy')}"></td>
+        <td th:text="${permiso.getMotivo()}"></td>
+        <td th:text="${permiso.getEstado()}"></td>
+    </tr>
+</table>
+
+<div class="footer">
+    Desarrollo de Servicios Web II - Developer Ramiro Huaman Acosta
+</div>
+
+</body>
+</html>
